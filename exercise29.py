@@ -1,5 +1,14 @@
 # exercise29.py
-# Functions
+# Functions, Dunder, Main, Docstring
+
+password = '1234'
+
+# Stubbing
+def getSecret():
+    """
+    Get secret
+    """
+    pass
 
 def greet(name, age = 16):
     print('Hello World')
@@ -12,17 +21,27 @@ def getName():
 def getAge():
     return 20
 
-# Positional arguments
-greet('Christian Jurilla')
-greet('Christian Jurilla', 20)
+def getHobbies():
+    return 'Singing', 'Cooking'
 
-# Named arguments / Keyword arguments
-greet(age=25, name='Christian',)
+def main():
+    # Positional arguments
+    greet('Christian Jurilla')
+    greet('Christian Jurilla', 20)
 
-params = {}
-params['name'] = getName()
-params['age'] = getAge()
+    # Named arguments / Keyword arguments
+    greet(age=25, name='Christian',)
 
-# Access the dict by values
-greet(**params)
+    params = {}
+    params['name'] = getName()
+    params['age'] = getAge()
+    # Unapacked the return value of this function
+    # params['hobby1'], params['hobby2'] = getHobbies()
 
+    # Access the dict by values
+    greet(**params)
+
+
+
+if __name__ == '__main__':
+    main()
