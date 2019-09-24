@@ -18,5 +18,8 @@ if power > 9000:
 
 
 
+cards = ['❤', '🍀', '♠', '♦']
+print(cards)
+print(random.choice(cards))
 
 
