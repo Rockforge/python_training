@@ -1,0 +1,7 @@
+PythonPH
+
+
+Null is important because you need to differentiate an empty value and a zero value
+
+
+Dynamic Type Syste
