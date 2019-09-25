@@ -1,4 +1,8 @@
 # common.py
+
+def add(a, b):
+    return a + b
+
 def make_spam():
     """
     Make spam
