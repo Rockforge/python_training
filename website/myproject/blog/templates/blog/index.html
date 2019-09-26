@@ -1,0 +1,17 @@
+{% comment %}  AFter the pipe (|)  is called a filter {% endcomment %}
+{% for post in posts %}
+    <b> <a href="{% url 'get post' post.id %}"> {{post.title | upper}} </a> </b>
+    <br>
+    <i>{{post.date_published | timesince }} age</i>
+    <hr>
+    <p>{{post.entry | truncatechars:5}}</p>
+
+
+    {% if post.user %}
+        <small>by {{post.user.username}}</small>
+    {% else %}
+        <small>Anonymous</small>
+    {% endif %}
+
+    <br>
+{% endfor %}

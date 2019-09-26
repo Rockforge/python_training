@@ -11,7 +11,7 @@
 # s - step into function/method
 # up - goes up one stack
 # ? - help
-# pp - pretty print
+# pp [code] - pretty print
 
 def add(a, b):
     c = a + b
