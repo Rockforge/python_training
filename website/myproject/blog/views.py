@@ -1,16 +1,22 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from rest_framework import viewsets
 from .models import Blog, Comment, CommentModelForm
-# from .forms import CommentForm
-# from django.forms import modelformset_factory
+from .forms import CommentForm
+from .utils import handleCSV
+from .serializers import BlogSerializer
 
+# Class based views
+class BlogViewSet(viewsets.ModelViewSet):
+    queryset = Blog.objects.all()
+    serializer_class = BlogSerializer
+
+
+#Function based views
 def index(request):
     # Get all the posts
     posts = Blog.objects.all()
-
-    context = { 
-        'posts': posts 
-    }
+    context = { 'posts': posts }
     return render(request, 'blog/index.html', context)
 
 def get_post(request, post_id):
@@ -23,12 +29,12 @@ def get_comment_from_user2(request):
 
 def get_comment_from_user(request):
     if request.method == 'POST':
-        form = CommentModelForm(request.POST)
+        form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()
+            handleCSV(request.FILES['upload'])
             return HttpResponse('Thank you')
     elif request.method == 'GET':
-        form = CommentModelForm()
+        form = CommentForm()
     context = {'form': form}
     return render(request, 'blog/comments.html', context)
 
